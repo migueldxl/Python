@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - {{ dados.nome }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-bottom: 5px;
+            color: #2c3e50;
+        }
+
+        h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            color: #2c3e50;
+            margin-top: 30px;
+        }
+
+        .contato {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+
+        .item {
+            margin-bottom: 15px;
+        }
+
+        .titulo-item {
+            font-weight: bold;
+            color: #34495e;
+        }
+
+        .subtitulo-item {
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>{{ dados.nome }}</h1>
+        <div class="contato">
+            Telefone: {{ dados.telefone }} | E-mail: {{ dados.email }}
+        </div>
+
+        <h2>Educação / Escolas</h2>
+        {% for esc in dados.educacao %}
+        <div class="item">
+            <div class="titulo-item">{{ esc.instituicao }}</div>
+            <div class="subtitulo-item">{{ esc.curso }} ({{ esc.periodo }})</div>
+        </div>
+        {% endfor %}
+
+        <h2>Experiência de Trabalho</h2>
+        {% for exp in dados.experiencia %}
+        <div class="item">
+            <div class="titulo-item">{{ exp.cargo }} - {{ exp.empresa }}</div>
+            <div class="subtitulo-item">{{ exp.periodo }}</div>
+            <p style="margin: 5px 0 0 0;">{{ exp.atividades }}</p>
+        </div>
+        {% endfor %}
+
+        <h2>Cursos</h2>
+        <ul>
+            {% for curso in dados.cursos %}
+            <li>{{ curso }}</li>
+            {% endfor %}
+        </ul>
+
+        <h2>Idiomas</h2>
+        <ul>
+            {% for idm in dados.idiomas %}
+            <li><strong>{{ idm.lingua }}:</strong> {{ idm.nivel }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+
+</html>
