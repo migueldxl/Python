@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alunos e Notas</title>
+</head>
+<body>
+    <h2>Lista de Alunos</h2>
+    <ul>
+    {% for aluno in alunos %}
+        <li>{{ aluno }}</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Status da Nota</h2>
+    <p>Nota final: {{ nota }}</p>
+    <p>Resultado: 
+        {% if nota >= 7 %}
+            <strong>Aprovado</strong>
+        {% else %}
+            <strong>Reprovado</strong>
+        {% endif %}
+    </p>
+</body>
+</html>
